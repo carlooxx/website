@@ -10,6 +10,7 @@ import {
 import { motion } from "framer-motion";
 import { titleAnimation, fade, fotoAnimation } from "../animation";
 import Wave from "./Wave";
+
 const AboutSection = () => {
   return (
     <StyledAbout>

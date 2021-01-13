@@ -1,75 +1,90 @@
-import React from 'react'
-import styled from 'styled-components'
-import {StyledAbout} from '../styles'
-
-
+import React from "react";
+import styled from "styled-components";
+import { StyledAbout } from "../styles";
+import Toggle from "../components/Toggle";
+import { AnimateSharedLayout } from "framer-motion";
+import { useScroll } from "./useScroll";
+import { fade } from "../animation";
 const FaqSection = () => {
-    return(
-    <StyledFaq>
-        <h2>Any Question <span>FAQ</span></h2>
-        <div className="question">
-            <h4>How Do I Start?</h4>
-            <div className="answer">
-            <div className="faq-line"></div>
-                <p>Lorem ipsum dolor sit amet.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, quaerat!</p>
-            </div>
-        </div>
-        <div className="question">
-            <h4>Daily Scedule</h4>
-            <div className="answer">
-            <div className="faq-line"></div>
-                <p>Lorem ipsum dolor sit amet.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, quaerat!</p>
-            </div>
-        </div>
-        <div className="question">
-            <h4>Payment Methods</h4>
-            <div className="answer">
-            <div className="faq-line"></div>
-                <p>Lorem ipsum dolor sit amet.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, quaerat!</p>
-            </div>
-        </div>
-        <div className="question">
-            <h4>What Product Do You Offer?</h4>
-            <div className="answer">
-            <div className="faq-line"></div>
-                <p>Lorem ipsum dolor sit amet.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, quaerat!</p>
-            </div>
-        </div>
+  const [element, controls] = useScroll();
+  return (
+    <StyledFaq
+      ref={element}
+      initial="hidden"
+      animate={controls}
+      variants={fade}
+    >
+      <h2>
+        Any Question <span>FAQ</span>
+      </h2>
+      <AnimateSharedLayout>
+        <Toggle title="How Do I Start?">
+          <div className="answer">
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam,
+              quaerat!
+            </p>
+          </div>
+        </Toggle>
+        <Toggle title="Daily Scedule">
+          <div className="answer">
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam,
+              quaerat!
+            </p>
+          </div>
+        </Toggle>
+        <Toggle title="Payment Methods">
+          <div className="answer">
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam,
+              quaerat!
+            </p>
+          </div>
+        </Toggle>
+        <Toggle title="What Product Do You Offer?">
+          <div className="answer">
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam,
+              quaerat!
+            </p>
+          </div>
+        </Toggle>
+      </AnimateSharedLayout>
     </StyledFaq>
-    )
-}
+  );
+};
 //Style
 
 const StyledFaq = styled(StyledAbout)`
-display: block;
-span{
+  display: block;
+  span {
     display: block;
-
-}
-h2{
+  }
+  h2 {
     padding-bottom: 2rem;
     font-weight: lighter;
-}
-.faq-line{
+  }
+  .faq-line {
     background: #cccccc;
     height: 0.2rem;
     margin: 2rem 0rem;
     width: 100%;
-}
-.question{
+  }
+  .question {
     padding: 3rem 0rem;
     cursor: pointer;
-}
-.answer{
+  }
+  .answer {
     padding: 2rem 0rem;
-    p{
-        padding: 1rem 0rem;
+    p {
+      padding: 1rem 0rem;
     }
-}
-`
+  }
+`;
 
-export default FaqSection 
+export default FaqSection;
